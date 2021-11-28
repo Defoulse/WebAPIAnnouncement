@@ -25,7 +25,23 @@ async function getAnnouncement(Id) {
     }
 }
 
+async function addAnnouncement(announcement) {
+    try {
+        let pool = await sql.connect(config);
+        let result = await pool.request()
+        .input('Id', sql.Int, announcement.Id)
+        .input('Title', sql.VarChar, announcement.Title)
+        .input('Information', sql.VarChar, announcement.Information)
+        .query("insert into Announcement(Id, Title, Information)values(@Id, @Title, @Information)")
+        return result.recordsets;
+    }
+    catch (error){
+        console.log(error);
+    }
+}
+
 module.exports = {
     getAnnouncements: getAnnouncements,
-    getAnnouncement: getAnnouncement
+    getAnnouncement: getAnnouncement,
+    addAnnouncement: addAnnouncement
 }

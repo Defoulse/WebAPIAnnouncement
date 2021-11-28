@@ -27,6 +27,13 @@ router.route("/announcements/:id").get((request, response) => {
     })
 })
 
+router.route("/announcement").post((request, response) => {
+    let announcement = {...request.body}
+    queries.addAnnouncement(announcement).then(result => {
+        response.status(201).json(result);
+    })
+})
+
 var port = process.env.PORT || 8090;
 app.listen(port);
 console.log('API is running at ' + port);

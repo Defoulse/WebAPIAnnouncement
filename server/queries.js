@@ -32,7 +32,8 @@ async function addAnnouncement(announcement) {
         .input('Id', sql.Int, announcement.Id)
         .input('Title', sql.VarChar, announcement.Title)
         .input('Information', sql.VarChar, announcement.Information)
-        .query("insert into Announcement(Id, Title, Information)values(@Id, @Title, @Information)")
+        .input('Price', sql.VarChar, announcement.Price)
+        .query("insert into Announcement(Id, Title, Information, Price)values(@Id, @Title, @Information, @Price)")
         return result.recordsets;
     }
     catch (error){

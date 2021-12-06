@@ -8,7 +8,7 @@ class App extends React.Component {
 
     onInputSubmit = async (input) => {
         var response;
-        if (input == "") {
+        if (input === "") {
             response = await Announcement.get('/announcements');
         }
         else {

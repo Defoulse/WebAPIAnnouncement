@@ -1,0 +1,19 @@
+create database WebAPI;
+use WebAPI;
+drop database WebAPI;
+
+create table Announcement(
+	Id int primary key not null,
+	Title varchar(255) not null,
+	Information varchar(255) not null,
+	Price int not null,
+	PublishedDate datetime DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- INSERT 
+insert into Announcement(Id, Title, Information, Price)
+values(1, 'My frist Announcement', 'Please come to Nur-Sultan, it is a beautiful city!', 110000);
+
+-- Show table
+select * from Announcement;
